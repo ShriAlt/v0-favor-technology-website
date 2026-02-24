@@ -6,85 +6,103 @@ import { Star, ExternalLink } from "lucide-react"
 
 const allTestimonials = [
   {
-    name: "Ramesh S.",
-    company: "TechVentures",
-    website: "techventures.in",
-    industry: "SaaS / Technology",
-    service: "Full-Stack Web Application",
-    result: "Launched MVP in 8 weeks, onboarded 500+ users in month one.",
+    name: "DB Office",
+    company: "DB Office",
+    website: "dboffice.in",
+    industry: "Office Supplies / E-Commerce",
+    service: "Full-Stack Web Application + E-Commerce Platform",
+    result: "Custom e-commerce platform built and deployed, streamlining online product catalog and order management.",
     division: "Favor Apps",
   },
   {
-    name: "Meena J.",
-    company: "RetailPro",
-    website: "retailpro.co.in",
-    industry: "E-Commerce / Retail",
-    service: "Meta + Google Performance Marketing",
-    result: "2X traffic and 3.8X ROAS within 60 days.",
+    name: "Crazy Crackers",
+    company: "Crazy Crackers",
+    website: "crazycrackers.in",
+    industry: "Retail / Seasonal E-Commerce",
+    service: "Google Ads + Meta Performance Marketing",
+    result: "Seasonal campaign setup driving targeted traffic during peak festive season with optimized ad spend.",
     division: "Favor Digital Marketing",
   },
   {
-    name: "Sundar K.",
-    company: "GreenPath",
-    website: "greenpath.org",
-    industry: "Sustainability / NGO",
-    service: "CRM + WhatsApp Automation",
-    result: "Saved 20+ hours/week, 40% increase in donor engagement.",
-    division: "Favor Digital Marketing",
-  },
-  {
-    name: "Lavanya P.",
-    company: "LogiFlow",
-    website: "logiflow.in",
-    industry: "Logistics / Operations",
-    service: "Custom ERP Web App",
-    result: "Reduced manual processes by 70%, live fleet tracking dashboard.",
+    name: "Amanah Chem Pharm",
+    company: "Amanah Chem Pharm",
+    website: "amanahchempharm.com",
+    industry: "Chemical & Pharmaceutical",
+    service: "Corporate Website + SEO Foundation",
+    result: "Professional web presence established with SEO-optimized pages for B2B lead generation.",
     division: "Favor Apps",
   },
   {
-    name: "Karthik V.",
-    company: "FoodKart",
-    website: "foodkart.com",
-    industry: "Food & Beverage / D2C",
-    service: "Google Ads + Shopping Campaigns",
-    result: "8X ROI on ad spend, 150% increase in monthly orders.",
-    division: "Favor Digital Marketing",
-  },
-  {
-    name: "Rajeev D.",
-    company: "IndustryMax",
-    website: "industrymax.co",
-    industry: "B2B / Manufacturing",
-    service: "Full-Funnel Meta + Google + LinkedIn",
-    result: "5X ROAS in 90 days, 300+ qualified leads per month.",
-    division: "Favor Digital Marketing",
-  },
-  {
-    name: "Vignesh M.",
-    company: "NexGen Solutions",
-    website: "nexgensolutions.io",
-    industry: "AI / Deep Tech",
-    service: "AI-Integrated Web Platform",
-    result: "Production-ready in 10 weeks, processing 50K+ API calls/day.",
+    name: "Bold Print Studio",
+    company: "Bold Print Studio",
+    website: "boldprintstudio.net",
+    industry: "Printing / Creative Services",
+    service: "Website Development + Local SEO",
+    result: "Modern portfolio website launched with local search optimization for regional visibility.",
     division: "Favor Apps",
   },
   {
-    name: "Priya A.",
-    company: "StyleHouse",
-    website: "stylehouse.in",
-    industry: "Fashion / D2C",
-    service: "SEO + Content Marketing",
-    result: "Ranking for 15+ keywords, 200% organic traffic growth in 4 months.",
+    name: "Karangal Institution",
+    company: "Karangal Institution",
+    website: "karangalinstitutioncbe.com",
+    industry: "Education / Institution",
+    service: "Institutional Website + Google Ads",
+    result: "Digital presence built with admissions-focused landing pages and targeted Google campaigns.",
     division: "Favor Digital Marketing",
   },
   {
-    name: "Anitha T.",
-    company: "CraftBazaar",
-    website: "craftbazaar.com",
-    industry: "Marketplace / E-Commerce",
-    service: "SaaS Admin Dashboard",
-    result: "Handles 10K+ users daily, 99.9% uptime since launch.",
+    name: "Skillful Learning",
+    company: "Skillful Learning",
+    website: "skillfullearning.in",
+    industry: "EdTech / Online Learning",
+    service: "Web Application + Performance Marketing",
+    result: "Learning platform developed with integrated lead-gen funnels and Meta ad campaigns.",
     division: "Favor Apps",
+  },
+  {
+    name: "Carage Car Care",
+    company: "Carage Car Care",
+    website: "caragecarcare.co.in",
+    industry: "Automotive / Services",
+    service: "Website + Local SEO + Google Ads",
+    result: "Service booking website with local SEO setup driving walk-in and appointment inquiries.",
+    division: "Favor Digital Marketing",
+  },
+  {
+    name: "Pulse Celebrations",
+    company: "Pulse Celebrations",
+    website: "pulsecelebrations.com",
+    industry: "Events / Celebrations",
+    service: "Brand Website + Social Media Marketing",
+    result: "Event showcase website with social media campaigns generating consistent booking inquiries.",
+    division: "Favor Digital Marketing",
+  },
+  {
+    name: "FoodLogixs",
+    company: "FoodLogixs",
+    website: "foodlogixs.in",
+    industry: "Food & Logistics / Supply Chain",
+    service: "Custom Web App + CRM Automation",
+    result: "Operations web app with automated CRM workflows reducing manual coordination overhead.",
+    division: "Favor Apps",
+  },
+  {
+    name: "Educadd Rajajinagar",
+    company: "Educadd Rajajinagar",
+    website: "educaddrajajinagar.co.in",
+    industry: "Education / Training Institute",
+    service: "SEO + Content Marketing + Google Ads",
+    result: "Enrollment-focused campaigns with content strategy driving qualified student inquiries.",
+    division: "Favor Digital Marketing",
+  },
+  {
+    name: "Sexologist in Tamil Nadu",
+    company: "Dr. Clinic",
+    website: "sexologistintamilnadu.com",
+    industry: "Healthcare / Medical Practice",
+    service: "Website + Local SEO + Google Ads",
+    result: "HIPAA-aware medical website with appointment booking and local search dominance.",
+    division: "Favor Digital Marketing",
   },
 ]
 
@@ -165,10 +183,15 @@ export function Testimonials({ filter }: TestimonialsProps) {
                   <span className="text-[11px] font-medium tracking-wide text-muted-foreground uppercase w-20 shrink-0 pt-0.5">
                     Website
                   </span>
-                  <span className="flex items-center gap-1 text-sm text-accent">
+                  <a
+                    href={`https://${t.website}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-sm text-accent hover:underline"
+                  >
                     {t.website}
                     <ExternalLink size={11} className="opacity-60" />
-                  </span>
+                  </a>
                 </div>
               </div>
 
