@@ -2,6 +2,7 @@
 
 import { useRef } from "react"
 import { useInView } from "@/hooks/use-in-view"
+import Link from "next/link"
 import {
   Smartphone,
   BarChart3,
@@ -36,9 +37,9 @@ const divisions = [
       { icon: Cpu, label: "AI Integrations" },
       { icon: ShieldCheck, label: "Secure & Scalable Architecture" },
     ],
-    cta: "Build Your App Today",
-    href: "#contact",
-    accent: "#0f4c75",
+    cta: "Learn More",
+    href: "/services/apps",
+    accent: "#1565C0",
   },
   {
     icon: BarChart3,
@@ -56,9 +57,9 @@ const divisions = [
       { value: "150%", label: "Avg ROI" },
       { value: "15+", label: "Keywords Ranked" },
     ],
-    cta: "Get Free Consultation",
-    href: "#contact",
-    accent: "#1b8ecf",
+    cta: "Learn More",
+    href: "/services/marketing",
+    accent: "#2196F3",
   },
   {
     icon: Film,
@@ -71,9 +72,9 @@ const divisions = [
       { icon: Calendar, label: "Event Coverage" },
       { icon: MessageSquare, label: "Social Content" },
     ],
-    cta: "Get Creative Proposal",
-    href: "#contact",
-    accent: "#56b5e6",
+    cta: "Learn More",
+    href: "/services/media",
+    accent: "#80D8FF",
   },
 ]
 
@@ -162,7 +163,7 @@ export function Divisions() {
               )}
 
               {/* CTA */}
-              <a
+              <Link
                 href={div.href}
                 className="flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary/40 px-6 py-3 text-sm font-medium text-foreground transition-all group-hover:border-accent/40 group-hover:bg-primary/20"
               >
@@ -171,7 +172,7 @@ export function Divisions() {
                   size={14}
                   className="transition-transform group-hover:translate-x-1"
                 />
-              </a>
+              </Link>
             </div>
           ))}
         </div>

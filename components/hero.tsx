@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import Link from "next/link"
 import { ArrowRight, MessageCircle } from "lucide-react"
 
 export function Hero() {
@@ -52,7 +53,7 @@ export function Hero() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(27, 142, 207, ${p.opacity})`
+        ctx.fillStyle = `rgba(66, 165, 245, ${p.opacity})`
         ctx.fill()
       })
 
@@ -66,7 +67,7 @@ export function Hero() {
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(15, 76, 117, ${0.15 * (1 - dist / 150)})`
+            ctx.strokeStyle = `rgba(33, 150, 243, ${0.12 * (1 - dist / 150)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -119,23 +120,23 @@ export function Hero() {
 
         {/* CTAs */}
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#contact"
-            className="group flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_30px_rgba(15,76,117,0.5)]"
+          <Link
+            href="/contact"
+            className="group flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_30px_rgba(33,150,243,0.4)]"
           >
             Get Free Strategy Call
             <ArrowRight
               size={16}
               className="transition-transform group-hover:translate-x-1"
             />
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href="/contact"
             className="flex items-center gap-2 rounded-lg border border-border bg-secondary/40 px-8 py-4 text-sm font-semibold text-foreground transition-all hover:border-accent/40 hover:bg-secondary/70"
           >
             <MessageCircle size={16} />
             Talk to Experts
-          </a>
+          </Link>
         </div>
 
         {/* Stats row */}

@@ -1,21 +1,17 @@
-import { Mail, Phone } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+import { Phone } from "lucide-react"
 
 const quickLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Why Favor", href: "#why-favor" },
-  { label: "Results", href: "#case-studies" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ]
 
 const serviceLinks = [
-  "Mobile App Development",
-  "Web App Development",
-  "SEO Optimization",
-  "Google & Meta Ads",
-  "Social Media Marketing",
-  "Brand Identity & Media",
+  { label: "Favor Apps", href: "/services/apps" },
+  { label: "Favor Digital Marketing", href: "/services/marketing" },
+  { label: "Favor Media", href: "/services/media" },
 ]
 
 export function Footer() {
@@ -25,16 +21,18 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <span className="text-sm font-bold text-primary-foreground">
-                  F
-                </span>
-              </div>
+            <Link href="/" className="mb-4 flex items-center gap-2">
+              <Image
+                src="/images/favor-logo.jpg"
+                alt="Favor Logo"
+                width={36}
+                height={36}
+                className="rounded-lg"
+              />
               <span className="text-xl font-bold tracking-tight text-foreground">
                 Favor
               </span>
-            </div>
+            </Link>
             <p className="mb-6 text-sm text-muted-foreground leading-relaxed">
               Your all-in-one innovation hub. Apps. Digital Marketing. Media.
               Driving growth for modern businesses.
@@ -49,13 +47,6 @@ export function Footer() {
               >
                 <Phone size={16} />
               </a>
-              <a
-                href="mailto:ceo@favorad.in"
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-secondary/40 text-muted-foreground transition-colors hover:border-accent/40 hover:text-accent"
-                aria-label="Email"
-              >
-                <Mail size={16} />
-              </a>
             </div>
           </div>
 
@@ -67,12 +58,12 @@ export function Footer() {
             <ul className="flex flex-col gap-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -85,10 +76,13 @@ export function Footer() {
             </h4>
             <ul className="flex flex-col gap-3">
               {serviceLinks.map((service) => (
-                <li key={service}>
-                  <span className="text-sm text-muted-foreground">
-                    {service}
-                  </span>
+                <li key={service.label}>
+                  <Link
+                    href={service.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -100,12 +94,6 @@ export function Footer() {
               Contact
             </h4>
             <div className="flex flex-col gap-3">
-              <a
-                href="mailto:ceo@favorad.in"
-                className="text-sm text-muted-foreground transition-colors hover:text-accent"
-              >
-                ceo@favorad.in
-              </a>
               <a
                 href="https://wa.me/918122347028"
                 target="_blank"

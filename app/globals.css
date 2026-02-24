@@ -4,30 +4,30 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #050a14;
-  --foreground: #e8edf5;
-  --card: rgba(15, 76, 117, 0.08);
-  --card-foreground: #e8edf5;
-  --popover: #0a1628;
-  --popover-foreground: #e8edf5;
-  --primary: #0f4c75;
+  --background: #020810;
+  --foreground: #e4ecf7;
+  --card: rgba(21, 101, 192, 0.07);
+  --card-foreground: #e4ecf7;
+  --popover: #061224;
+  --popover-foreground: #e4ecf7;
+  --primary: #1565C0;
   --primary-foreground: #ffffff;
-  --secondary: #0d1f3c;
-  --secondary-foreground: #c8d6e5;
-  --muted: #0d1f3c;
-  --muted-foreground: #7b8fa8;
-  --accent: #1b8ecf;
+  --secondary: #081830;
+  --secondary-foreground: #b0c7e4;
+  --muted: #081830;
+  --muted-foreground: #6e8bb0;
+  --accent: #42A5F5;
   --accent-foreground: #ffffff;
   --destructive: #e74c3c;
   --destructive-foreground: #ffffff;
-  --border: rgba(15, 76, 117, 0.25);
-  --input: rgba(15, 76, 117, 0.2);
-  --ring: #1b8ecf;
-  --chart-1: #0f4c75;
-  --chart-2: #1b8ecf;
-  --chart-3: #56b5e6;
-  --chart-4: #0d1f3c;
-  --chart-5: #c8d6e5;
+  --border: rgba(33, 150, 243, 0.2);
+  --input: rgba(33, 150, 243, 0.15);
+  --ring: #42A5F5;
+  --chart-1: #1565C0;
+  --chart-2: #2196F3;
+  --chart-3: #42A5F5;
+  --chart-4: #80D8FF;
+  --chart-5: #b0c7e4;
   --radius: 0.75rem;
 }
 
@@ -131,14 +131,14 @@ html {
 }
 
 .glass-card {
-  background: rgba(15, 76, 117, 0.07);
+  background: rgba(21, 101, 192, 0.06);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(15, 76, 117, 0.18);
+  border: 1px solid rgba(33, 150, 243, 0.15);
 }
 
 .glass-card-hover:hover {
-  background: rgba(15, 76, 117, 0.14);
-  border-color: rgba(27, 142, 207, 0.35);
-  box-shadow: 0 0 30px rgba(15, 76, 117, 0.15);
+  background: rgba(21, 101, 192, 0.12);
+  border-color: rgba(66, 165, 245, 0.35);
+  box-shadow: 0 0 30px rgba(33, 150, 243, 0.12);
 }
