@@ -33,23 +33,28 @@ export function PlanDetail({ plan }: PlanDetailProps) {
     })
   }
 
+  const platforms = plan.platforms ?? []
+  const addOns = plan.addOns ?? []
+  const highlights = plan.highlights ?? []
+
   const includedTotal = useMemo(
     () =>
-      plan.platforms
+      platforms
         .filter((p) => p.included)
-        .reduce((sum, p) => sum + p.monthlyCost, 0),
-    [plan.platforms]
+        .reduce((sum, p) => sum + (p.monthlyCost ?? 0), 0),
+    [platforms]
   )
 
   const addOnTotal = useMemo(
     () =>
-      plan.addOns
+      addOns
         .filter((a) => selectedAddOns.has(a.id))
-        .reduce((sum, a) => sum + a.price, 0),
-    [plan.addOns, selectedAddOns]
+        .reduce((sum, a) => sum + (a.price ?? 0), 0),
+    [addOns, selectedAddOns]
   )
 
-  const grandTotal = plan.startingPrice + addOnTotal
+  const basePrice = plan.startingPrice ?? 0
+  const grandTotal = basePrice + addOnTotal
 
   return (
     <div className="relative py-16 md:py-24">
@@ -63,7 +68,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                 Plan Overview
               </h2>
               <p className="mb-6 text-base text-muted-foreground leading-relaxed">
-                {plan.description}
+                {plan.description ?? ""}
               </p>
 
               <div className="grid gap-4 sm:grid-cols-3">
@@ -74,7 +79,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                       Starting at
                     </p>
                     <p className="text-lg font-bold text-foreground">
-                      {formatINR(plan.startingPrice)}
+                      {formatINR(basePrice)}
                       <span className="text-xs font-normal text-muted-foreground">
                         /mo
                       </span>
@@ -88,7 +93,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                       Min Contract
                     </p>
                     <p className="text-lg font-bold text-foreground">
-                      {plan.minContract}
+                      {plan.minContract ?? "N/A"}
                     </p>
                   </div>
                 </div>
@@ -99,7 +104,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                       Platforms
                     </p>
                     <p className="text-lg font-bold text-foreground">
-                      {plan.platforms.filter((p) => p.included).length} Included
+                      {platforms.filter((p) => p.included).length} Included
                     </p>
                   </div>
                 </div>
@@ -107,140 +112,149 @@ export function PlanDetail({ plan }: PlanDetailProps) {
             </section>
 
             {/* What's Included */}
-            <section className="mb-12">
-              <h2 className="mb-4 text-2xl font-bold text-foreground">
-                {"What's Included"}
-              </h2>
-              <div className="glass-card rounded-2xl p-6">
-                <div className="flex flex-col gap-3">
-                  {plan.highlights.map((h) => (
-                    <div key={h} className="flex items-start gap-3">
-                      <CheckCircle2
-                        size={16}
-                        className="mt-0.5 shrink-0 text-accent"
-                      />
-                      <span className="text-sm text-foreground leading-relaxed">
-                        {h}
-                      </span>
-                    </div>
-                  ))}
+            {highlights.length > 0 && (
+              <section className="mb-12">
+                <h2 className="mb-4 text-2xl font-bold text-foreground">
+                  {"What's Included"}
+                </h2>
+                <div className="glass-card rounded-2xl p-6">
+                  <div className="flex flex-col gap-3">
+                    {highlights.map((h) => (
+                      <div key={h} className="flex items-start gap-3">
+                        <CheckCircle2
+                          size={16}
+                          className="mt-0.5 shrink-0 text-accent"
+                        />
+                        <span className="text-sm text-foreground leading-relaxed">
+                          {h}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            )}
 
             {/* Platform Breakdown */}
-            <section className="mb-12">
-              <h2 className="mb-4 text-2xl font-bold text-foreground">
-                Platform Cost Breakdown
-              </h2>
-              <div className="glass-card overflow-hidden rounded-2xl">
-                <div className="flex items-center justify-between border-b border-border bg-primary/5 px-6 py-3">
-                  <span className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
-                    Platform
-                  </span>
-                  <span className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
-                    Monthly Cost
-                  </span>
-                </div>
-                {plan.platforms.map((p) => (
-                  <div
-                    key={p.name}
-                    className={`flex items-center justify-between border-b border-border/50 px-6 py-4 ${
-                      !p.included ? "opacity-50" : ""
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      {p.included ? (
-                        <Check size={14} className="text-accent" />
-                      ) : (
-                        <Plus size={14} className="text-muted-foreground" />
-                      )}
+            {platforms.length > 0 && (
+              <section className="mb-12">
+                <h2 className="mb-4 text-2xl font-bold text-foreground">
+                  Platform Cost Breakdown
+                </h2>
+                <div className="glass-card overflow-hidden rounded-2xl">
+                  <div className="flex items-center justify-between border-b border-border bg-primary/5 px-6 py-3">
+                    <span className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+                      Platform
+                    </span>
+                    <span className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+                      Monthly Cost
+                    </span>
+                  </div>
+                  {platforms.map((p) => (
+                    <div
+                      key={p.name}
+                      className={`flex items-center justify-between border-b border-border/50 px-6 py-4 ${
+                        !p.included ? "opacity-50" : ""
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        {p.included ? (
+                          <Check size={14} className="text-accent" />
+                        ) : (
+                          <Plus size={14} className="text-muted-foreground" />
+                        )}
+                        <span
+                          className={`text-sm ${
+                            p.included
+                              ? "text-foreground"
+                              : "text-muted-foreground"
+                          }`}
+                        >
+                          {p.name}
+                        </span>
+                        {!p.included && (
+                          <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] text-muted-foreground">
+                            Optional
+                          </span>
+                        )}
+                      </div>
                       <span
-                        className={`text-sm ${
+                        className={`text-sm font-medium ${
                           p.included
                             ? "text-foreground"
                             : "text-muted-foreground"
                         }`}
                       >
-                        {p.name}
+                        {formatINR(p.monthlyCost ?? 0)}
                       </span>
-                      {!p.included && (
-                        <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] text-muted-foreground">
-                          Optional
-                        </span>
-                      )}
                     </div>
-                    <span
-                      className={`text-sm font-medium ${
-                        p.included
-                          ? "text-foreground"
-                          : "text-muted-foreground"
-                      }`}
-                    >
-                      {formatINR(p.monthlyCost)}
+                  ))}
+                  <div className="flex items-center justify-between bg-primary/5 px-6 py-4">
+                    <span className="text-sm font-semibold text-foreground">
+                      Included Platforms Total
+                    </span>
+                    <span className="text-sm font-bold text-accent">
+                      {formatINR(includedTotal)}
                     </span>
                   </div>
-                ))}
-                <div className="flex items-center justify-between bg-primary/5 px-6 py-4">
-                  <span className="text-sm font-semibold text-foreground">
-                    Included Platforms Total
-                  </span>
-                  <span className="text-sm font-bold text-accent">
-                    {formatINR(includedTotal)}
-                  </span>
                 </div>
-              </div>
-            </section>
+              </section>
+            )}
 
             {/* Add-Ons */}
-            <section className="mb-12">
-              <h2 className="mb-4 text-2xl font-bold text-foreground">
-                Optional Add-Ons
-              </h2>
-              <p className="mb-6 text-sm text-muted-foreground">
-                Toggle add-ons to see your estimated monthly total update in
-                real time.
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {plan.addOns.map((addOn) => {
-                  const isSelected = selectedAddOns.has(addOn.id)
-                  return (
-                    <button
-                      key={addOn.id}
-                      onClick={() => toggleAddOn(addOn.id)}
-                      className={`glass-card group flex flex-col rounded-xl p-5 text-left transition-all duration-300 ${
-                        isSelected
-                          ? "border-accent/40 bg-accent/8 ring-1 ring-accent/20"
-                          : "hover:border-accent/20"
-                      }`}
-                    >
-                      <div className="mb-2 flex items-center justify-between">
-                        <span className="text-sm font-semibold text-foreground">
-                          {addOn.name}
-                        </span>
-                        <div
-                          className={`flex h-5 w-5 items-center justify-center rounded-md border transition-colors ${
-                            isSelected
-                              ? "border-accent bg-accent"
-                              : "border-border"
-                          }`}
-                        >
-                          {isSelected && (
-                            <Check size={12} className="text-accent-foreground" />
-                          )}
+            {addOns.length > 0 && (
+              <section className="mb-12">
+                <h2 className="mb-4 text-2xl font-bold text-foreground">
+                  Optional Add-Ons
+                </h2>
+                <p className="mb-6 text-sm text-muted-foreground">
+                  Toggle add-ons to see your estimated monthly total update in
+                  real time.
+                </p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {addOns.map((addOn) => {
+                    const isSelected = selectedAddOns.has(addOn.id)
+                    return (
+                      <button
+                        key={addOn.id}
+                        onClick={() => toggleAddOn(addOn.id)}
+                        className={`glass-card group flex flex-col rounded-xl p-5 text-left transition-all duration-300 ${
+                          isSelected
+                            ? "border-accent/40 bg-accent/[0.08] ring-1 ring-accent/20"
+                            : "hover:border-accent/20"
+                        }`}
+                      >
+                        <div className="mb-2 flex items-center justify-between">
+                          <span className="text-sm font-semibold text-foreground">
+                            {addOn.name}
+                          </span>
+                          <div
+                            className={`flex h-5 w-5 items-center justify-center rounded-md border transition-colors ${
+                              isSelected
+                                ? "border-accent bg-accent"
+                                : "border-border"
+                            }`}
+                          >
+                            {isSelected && (
+                              <Check
+                                size={12}
+                                className="text-accent-foreground"
+                              />
+                            )}
+                          </div>
                         </div>
-                      </div>
-                      <p className="mb-3 text-xs text-muted-foreground leading-relaxed">
-                        {addOn.description}
-                      </p>
-                      <span className="mt-auto text-sm font-bold text-accent">
-                        +{formatINR(addOn.price)}/mo
-                      </span>
-                    </button>
-                  )
-                })}
-              </div>
-            </section>
+                        <p className="mb-3 text-xs text-muted-foreground leading-relaxed">
+                          {addOn.description}
+                        </p>
+                        <span className="mt-auto text-sm font-bold text-accent">
+                          +{formatINR(addOn.price ?? 0)}/mo
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </section>
+            )}
           </div>
 
           {/* Sticky sidebar */}
@@ -258,10 +272,10 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">Base plan</span>
                     <span className="font-medium text-foreground">
-                      {formatINR(plan.startingPrice)}
+                      {formatINR(basePrice)}
                     </span>
                   </div>
-                  {plan.addOns
+                  {addOns
                     .filter((a) => selectedAddOns.has(a.id))
                     .map((a) => (
                       <div
@@ -270,7 +284,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                       >
                         <span className="text-muted-foreground">{a.name}</span>
                         <span className="font-medium text-foreground">
-                          +{formatINR(a.price)}
+                          +{formatINR(a.price ?? 0)}
                         </span>
                       </div>
                     ))}

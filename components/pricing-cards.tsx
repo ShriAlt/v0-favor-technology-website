@@ -63,7 +63,7 @@ export function PricingCards() {
                 </div>
 
                 {/* Best For */}
-                <div className="mb-6 rounded-lg bg-primary/8 px-4 py-3">
+                <div className="mb-6 rounded-lg bg-primary/[0.08] px-4 py-3">
                   <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">
                     Best For
                   </p>

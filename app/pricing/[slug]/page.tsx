@@ -17,7 +17,11 @@ export async function generateMetadata({
 }: PlanPageProps): Promise<Metadata> {
   const { slug } = await params
   const plan = getPlanBySlug(slug)
-  if (!plan) return {}
+  if (!plan) {
+    return {
+      title: "Plan Not Found",
+    }
+  }
   return {
     title: `${plan.name} — ${plan.tagline}`,
     description: plan.description,
@@ -26,8 +30,16 @@ export async function generateMetadata({
 
 export default async function PlanPage({ params }: PlanPageProps) {
   const { slug } = await params
+
+  if (!slug || typeof slug !== "string") {
+    notFound()
+  }
+
   const plan = getPlanBySlug(slug)
-  if (!plan) notFound()
+
+  if (!plan) {
+    notFound()
+  }
 
   return (
     <>

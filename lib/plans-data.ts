@@ -157,10 +157,11 @@ export function getPlanBySlug(slug: string): Plan | undefined {
   return plans.find((p) => p.slug === slug)
 }
 
-export function formatINR(amount: number): string {
+export function formatINR(amount: number | undefined | null): string {
+  const value = typeof amount === "number" && !Number.isNaN(amount) ? amount : 0
   return new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "INR",
     maximumFractionDigits: 0,
-  }).format(amount)
+  }).format(value)
 }
