@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Mail, Phone } from "lucide-react"
+import { Phone } from "lucide-react"
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -46,13 +46,6 @@ export function Footer() {
                 aria-label="WhatsApp"
               >
                 <Phone size={16} />
-              </a>
-              <a
-                href="mailto:ceo@favorad.in"
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-secondary/40 text-muted-foreground transition-colors hover:border-accent/40 hover:text-accent"
-                aria-label="Email"
-              >
-                <Mail size={16} />
               </a>
             </div>
           </div>
@@ -101,12 +94,6 @@ export function Footer() {
               Contact
             </h4>
             <div className="flex flex-col gap-3">
-              <a
-                href="mailto:ceo@favorad.in"
-                className="text-sm text-muted-foreground transition-colors hover:text-accent"
-              >
-                ceo@favorad.in
-              </a>
               <a
                 href="https://wa.me/918122347028"
                 target="_blank"

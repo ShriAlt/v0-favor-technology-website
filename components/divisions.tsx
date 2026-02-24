@@ -39,7 +39,7 @@ const divisions = [
     ],
     cta: "Learn More",
     href: "/services/apps",
-    accent: "#0f4c75",
+    accent: "#1565C0",
   },
   {
     icon: BarChart3,
@@ -59,7 +59,7 @@ const divisions = [
     ],
     cta: "Learn More",
     href: "/services/marketing",
-    accent: "#1b8ecf",
+    accent: "#2196F3",
   },
   {
     icon: Film,
@@ -74,7 +74,7 @@ const divisions = [
     ],
     cta: "Learn More",
     href: "/services/media",
-    accent: "#56b5e6",
+    accent: "#80D8FF",
   },
 ]
 

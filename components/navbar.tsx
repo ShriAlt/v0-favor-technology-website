@@ -135,7 +135,7 @@ export function Navbar() {
           )}
           <Link
             href="/contact"
-            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_20px_rgba(15,76,117,0.4)]"
+            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_20px_rgba(33,150,243,0.4)]"
           >
             Get Strategy Call
           </Link>

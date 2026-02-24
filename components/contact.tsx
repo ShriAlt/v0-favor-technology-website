@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react"
 import { useInView } from "@/hooks/use-in-view"
-import { Mail, Phone, Send } from "lucide-react"
+import { Phone, Send } from "lucide-react"
 
 const services = [
   "App Development",
@@ -140,7 +140,7 @@ export function Contact() {
 
                 <button
                   type="submit"
-                  className="flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_30px_rgba(15,76,117,0.4)]"
+                  className="flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_30px_rgba(33,150,243,0.4)]"
                 >
                   <Send size={16} />
                   Send Message
@@ -151,21 +151,6 @@ export function Contact() {
 
           {/* Contact Info */}
           <div className="flex flex-col gap-6 lg:col-span-2">
-            <div className="glass-card glass-card-hover rounded-2xl p-7 transition-all duration-300">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20">
-                <Mail size={18} className="text-accent" />
-              </div>
-              <h3 className="mb-1 text-sm font-semibold text-foreground">
-                Email Us
-              </h3>
-              <a
-                href="mailto:ceo@favorad.in"
-                className="text-sm text-accent hover:underline"
-              >
-                ceo@favorad.in
-              </a>
-            </div>
-
             <div className="glass-card glass-card-hover rounded-2xl p-7 transition-all duration-300">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20">
                 <Phone size={18} className="text-accent" />

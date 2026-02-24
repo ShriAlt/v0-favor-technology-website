@@ -39,7 +39,7 @@ export function CtaBanner({
         </p>
         <Link
           href={ctaHref}
-          className="group inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_30px_rgba(15,76,117,0.5)]"
+          className="group inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_30px_rgba(33,150,243,0.4)]"
         >
           {ctaText}
           <ArrowRight

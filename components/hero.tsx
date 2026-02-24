@@ -53,7 +53,7 @@ export function Hero() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(27, 142, 207, ${p.opacity})`
+        ctx.fillStyle = `rgba(66, 165, 245, ${p.opacity})`
         ctx.fill()
       })
 
@@ -67,7 +67,7 @@ export function Hero() {
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(15, 76, 117, ${0.15 * (1 - dist / 150)})`
+            ctx.strokeStyle = `rgba(33, 150, 243, ${0.12 * (1 - dist / 150)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -122,7 +122,7 @@ export function Hero() {
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="/contact"
-            className="group flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_30px_rgba(15,76,117,0.5)]"
+            className="group flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_30px_rgba(33,150,243,0.4)]"
           >
             Get Free Strategy Call
             <ArrowRight
