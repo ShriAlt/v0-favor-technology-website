@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import Link from "next/link"
 import { ArrowRight, Check, Star } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
@@ -9,6 +9,11 @@ import { plans, formatINR } from "@/lib/plans-data"
 export function PricingCards() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { threshold: 0.1 })
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <section className="relative py-28 md:py-36">
@@ -53,7 +58,7 @@ export function PricingCards() {
                 <div className="mb-6">
                   <div className="flex items-baseline gap-1">
                     <span className="text-3xl font-bold text-foreground md:text-4xl">
-                      {formatINR(plan.startingPrice)}
+                      {mounted ? formatINR(plan.startingPrice) : <span className="inline-block h-8 w-28 animate-pulse rounded bg-muted" />}
                     </span>
                     <span className="text-sm text-muted-foreground">/month</span>
                   </div>

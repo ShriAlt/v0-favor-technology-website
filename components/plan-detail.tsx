@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import {
   Check,
@@ -19,7 +19,12 @@ interface PlanDetailProps {
 }
 
 export function PlanDetail({ plan }: PlanDetailProps) {
+  const [mounted, setMounted] = useState(false)
   const [selectedAddOns, setSelectedAddOns] = useState<Set<string>>(new Set())
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggleAddOn = (id: string) => {
     setSelectedAddOns((prev) => {
@@ -33,9 +38,11 @@ export function PlanDetail({ plan }: PlanDetailProps) {
     })
   }
 
-  const platforms = plan.platforms ?? []
-  const addOns = plan.addOns ?? []
-  const highlights = plan.highlights ?? []
+  // Stable references keyed off plan.slug to avoid re-creating arrays every render
+  const platforms = useMemo(() => plan?.platforms ?? [], [plan?.slug])
+  const addOns = useMemo(() => plan?.addOns ?? [], [plan?.slug])
+  const highlights = useMemo(() => plan?.highlights ?? [], [plan?.slug])
+  const basePrice = plan?.startingPrice ?? 0
 
   const includedTotal = useMemo(
     () =>
@@ -53,8 +60,21 @@ export function PlanDetail({ plan }: PlanDetailProps) {
     [addOns, selectedAddOns]
   )
 
-  const basePrice = plan.startingPrice ?? 0
   const grandTotal = basePrice + addOnTotal
+
+  // Safe price renderer -- shows placeholder on server, real value on client
+  const price = (amount: number) => {
+    if (!mounted) return <span className="inline-block h-5 w-16 animate-pulse rounded bg-muted" />
+    return formatINR(amount)
+  }
+
+  if (!plan) {
+    return (
+      <div className="flex min-h-[40vh] items-center justify-center">
+        <p className="text-muted-foreground">Plan data unavailable.</p>
+      </div>
+    )
+  }
 
   return (
     <div className="relative py-16 md:py-24">
@@ -79,7 +99,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                       Starting at
                     </p>
                     <p className="text-lg font-bold text-foreground">
-                      {formatINR(basePrice)}
+                      {price(basePrice)}
                       <span className="text-xs font-normal text-muted-foreground">
                         /mo
                       </span>
@@ -185,7 +205,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                             : "text-muted-foreground"
                         }`}
                       >
-                        {formatINR(p.monthlyCost ?? 0)}
+                        {price(p.monthlyCost ?? 0)}
                       </span>
                     </div>
                   ))}
@@ -194,7 +214,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                       Included Platforms Total
                     </span>
                     <span className="text-sm font-bold text-accent">
-                      {formatINR(includedTotal)}
+                      {price(includedTotal)}
                     </span>
                   </div>
                 </div>
@@ -247,7 +267,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                           {addOn.description}
                         </p>
                         <span className="mt-auto text-sm font-bold text-accent">
-                          +{formatINR(addOn.price ?? 0)}/mo
+                          +{price(addOn.price ?? 0)}/mo
                         </span>
                       </button>
                     )
@@ -272,22 +292,25 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">Base plan</span>
                     <span className="font-medium text-foreground">
-                      {formatINR(basePrice)}
+                      {price(basePrice)}
                     </span>
                   </div>
-                  {addOns
-                    .filter((a) => selectedAddOns.has(a.id))
-                    .map((a) => (
-                      <div
-                        key={a.id}
-                        className="flex items-center justify-between text-sm"
-                      >
-                        <span className="text-muted-foreground">{a.name}</span>
-                        <span className="font-medium text-foreground">
-                          +{formatINR(a.price ?? 0)}
-                        </span>
-                      </div>
-                    ))}
+                  {mounted &&
+                    addOns
+                      .filter((a) => selectedAddOns.has(a.id))
+                      .map((a) => (
+                        <div
+                          key={a.id}
+                          className="flex items-center justify-between text-sm"
+                        >
+                          <span className="text-muted-foreground">
+                            {a.name}
+                          </span>
+                          <span className="font-medium text-foreground">
+                            +{formatINR(a.price ?? 0)}
+                          </span>
+                        </div>
+                      ))}
                 </div>
 
                 <div className="mb-6 border-t border-border pt-4">
@@ -296,7 +319,7 @@ export function PlanDetail({ plan }: PlanDetailProps) {
                       Estimated Total
                     </span>
                     <span className="text-2xl font-bold text-accent">
-                      {formatINR(grandTotal)}
+                      {price(grandTotal)}
                     </span>
                   </div>
                   <p className="mt-1 text-right text-xs text-muted-foreground">
