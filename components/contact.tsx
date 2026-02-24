@@ -1,0 +1,217 @@
+"use client"
+
+import { useRef, useState } from "react"
+import { useInView } from "@/hooks/use-in-view"
+import { Mail, Phone, Send } from "lucide-react"
+
+const services = [
+  "App Development",
+  "Digital Marketing",
+  "Media & Branding",
+  "AI Integration",
+  "Full Growth Strategy",
+]
+
+export function Contact() {
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { threshold: 0.15 })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setSubmitted(true)
+    setTimeout(() => setSubmitted(false), 4000)
+  }
+
+  return (
+    <section id="contact" className="relative py-28 md:py-36">
+      <div className="animate-glow-pulse absolute left-1/4 bottom-0 h-[400px] w-[400px] rounded-full bg-primary/5 blur-[150px]" />
+
+      <div
+        ref={ref}
+        className={`relative mx-auto max-w-6xl px-6 transition-all duration-700 ${
+          isInView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+        }`}
+      >
+        <div className="mb-16 text-center">
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <div className="h-px w-12 bg-accent/50" />
+            <span className="text-xs font-semibold tracking-widest text-accent uppercase">
+              Get In Touch
+            </span>
+            <div className="h-px w-12 bg-accent/50" />
+          </div>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-5xl text-balance">
+            {"Let's Build Something Great"}
+          </h2>
+          <p className="mx-auto max-w-2xl text-base text-muted-foreground leading-relaxed">
+            Ready to transform your business? Reach out and our team will craft
+            a strategy tailored to your goals.
+          </p>
+        </div>
+
+        <div className="grid gap-12 lg:grid-cols-5">
+          {/* Form */}
+          <div className="glass-card rounded-2xl p-8 lg:col-span-3">
+            {submitted ? (
+              <div className="flex h-full min-h-[300px] flex-col items-center justify-center gap-4 text-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/20">
+                  <Send size={24} className="text-accent" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">
+                  Message Sent!
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  We will get back to you within 24 hours.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="mb-2 block text-xs font-medium tracking-wide text-muted-foreground uppercase"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      required
+                      placeholder="Your name"
+                      className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="mb-2 block text-xs font-medium tracking-wide text-muted-foreground uppercase"
+                    >
+                      Phone
+                    </label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      required
+                      placeholder="+91 XXXXX XXXXX"
+                      className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-xs font-medium tracking-wide text-muted-foreground uppercase"
+                  >
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    placeholder="you@company.com"
+                    className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="service"
+                    className="mb-2 block text-xs font-medium tracking-wide text-muted-foreground uppercase"
+                  >
+                    Service Interested In
+                  </label>
+                  <select
+                    id="service"
+                    required
+                    className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-3 text-sm text-foreground focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30"
+                  >
+                    <option value="" className="bg-background text-muted-foreground">
+                      Select a service
+                    </option>
+                    {services.map((s) => (
+                      <option key={s} value={s} className="bg-background text-foreground">
+                        {s}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block text-xs font-medium tracking-wide text-muted-foreground uppercase"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    required
+                    placeholder="Tell us about your project..."
+                    className="w-full resize-none rounded-lg border border-border bg-secondary/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_30px_rgba(15,76,117,0.4)]"
+                >
+                  <Send size={16} />
+                  Send Message
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Contact Info */}
+          <div className="flex flex-col gap-6 lg:col-span-2">
+            <div className="glass-card glass-card-hover rounded-2xl p-7 transition-all duration-300">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20">
+                <Mail size={18} className="text-accent" />
+              </div>
+              <h3 className="mb-1 text-sm font-semibold text-foreground">
+                Email Us
+              </h3>
+              <a
+                href="mailto:ceo@favorad.in"
+                className="text-sm text-accent hover:underline"
+              >
+                ceo@favorad.in
+              </a>
+            </div>
+
+            <div className="glass-card glass-card-hover rounded-2xl p-7 transition-all duration-300">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20">
+                <Phone size={18} className="text-accent" />
+              </div>
+              <h3 className="mb-1 text-sm font-semibold text-foreground">
+                Call / WhatsApp
+              </h3>
+              <a
+                href="https://wa.me/918122347028"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent hover:underline"
+              >
+                +91 8122347028
+              </a>
+            </div>
+
+            <div className="glass-card rounded-2xl p-7">
+              <h3 className="mb-3 text-sm font-semibold text-foreground">
+                Quick Response
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                We typically respond within 2 hours during business hours. For
+                urgent matters, reach us directly on WhatsApp.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
