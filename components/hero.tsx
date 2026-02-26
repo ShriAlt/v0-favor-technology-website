@@ -6,11 +6,7 @@ import { ArrowRight, MessageCircle } from "lucide-react"
 export function Hero() {
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/5 pt-20">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute -right-1/4 top-1/4 h-96 w-96 rounded-full bg-accent/3 blur-[80px]" />
-      </div>
-
+    <section className="relative flex min-h-screen items-center overflow-hidden bg-background pt-20">
       <div className="relative z-10 mx-auto max-w-6xl px-6 w-full">
         {/* Headline */}
         <h1 className="mb-8 text-6xl font-bold tracking-tight text-foreground sm:text-7xl md:text-8xl lg:text-[6rem] leading-[1.05]">

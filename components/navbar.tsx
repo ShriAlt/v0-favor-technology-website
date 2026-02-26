@@ -99,15 +99,15 @@ export function Navbar() {
                   />
                 </button>
                 {servicesOpen && (
-                  <div className="glass-card absolute top-full left-0 mt-3 w-56 rounded-xl border border-border p-2 shadow-xl">
+                  <div className="absolute top-full left-0 mt-3 w-56 rounded-xl bg-[#111827] border border-foreground/10 p-2 shadow-xl">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
                         className={`block rounded-lg px-4 py-2.5 text-sm transition-colors ${
                           isActive(child.href)
-                            ? "bg-primary/15 text-accent"
-                            : "text-muted-foreground hover:bg-primary/10 hover:text-foreground"
+                            ? "bg-primary/20 text-accent"
+                            : "text-foreground/70 hover:bg-primary/15 hover:text-foreground"
                         }`}
                       >
                         {child.label}
@@ -132,7 +132,7 @@ export function Navbar() {
           )}
           <Link
             href="/contact"
-            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-accent hover:shadow-[0_0_20px_rgba(33,150,243,0.4)]"
+            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-accent hover:shadow-lg"
           >
             Book Strategy Call
           </Link>

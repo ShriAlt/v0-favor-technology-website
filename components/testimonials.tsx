@@ -130,7 +130,7 @@ export function Testimonials({ filter }: TestimonialsProps) {
             <div className="h-px w-12 bg-accent/50" />
           </div>
           <h2 className="mb-5 text-3xl font-bold tracking-tight text-foreground md:text-5xl text-balance">
-            Real Clients. Measurable Results.
+            Client Success Stories
           </h2>
           <p className="mx-auto max-w-2xl text-base text-muted-foreground leading-relaxed">
             Every engagement is built around clear deliverables and measurable
