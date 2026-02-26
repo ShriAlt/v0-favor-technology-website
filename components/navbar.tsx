@@ -75,6 +75,8 @@ export function Navbar() {
             width={40}
             height={40}
             className="rounded-lg"
+            loading="eager"
+            priority
           />
           <span className="text-xl font-bold tracking-tight text-foreground">
             Favor
