@@ -68,11 +68,11 @@ export function Divisions() {
   const isInView = useInView(ref, { threshold: 0.1 })
 
   return (
-    <section id="services" className="relative py-24 md:py-32">
+    <section id="services" className="relative py-14 md:py-20">
       <div className="animate-glow-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-primary/3 blur-[80px]" />
 
       <div ref={ref} className="relative mx-auto max-w-6xl px-6">
-        <div className="mb-20 text-center">
+        <div className="mb-12 text-center">
           <span className="mb-3 inline-block text-xs font-semibold tracking-widest text-accent uppercase">
             Our Divisions
           </span>

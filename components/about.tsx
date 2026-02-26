@@ -9,7 +9,7 @@ export function About() {
   const isInView = useInView(ref, { threshold: 0.2 })
 
   return (
-    <section id="about" className="relative py-20 md:py-28">
+    <section id="about" className="relative py-14 md:py-20">
       <div
         ref={ref}
         className={`mx-auto max-w-6xl px-6 transition-all duration-700 ${

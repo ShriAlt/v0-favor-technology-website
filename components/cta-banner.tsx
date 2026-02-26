@@ -22,7 +22,7 @@ export function CtaBanner({
   const isInView = useInView(ref, { threshold: 0.3 })
 
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="relative py-14 md:py-20">
       <div className="animate-glow-pulse absolute inset-0 -z-10 mx-auto h-[250px] w-[400px] rounded-full bg-primary/4 blur-[100px]" />
 
       <div

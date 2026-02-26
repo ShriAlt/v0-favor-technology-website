@@ -27,7 +27,7 @@ export function AutomationTools() {
   const { ref, isInView } = useInViewRef()
 
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="relative py-14 md:py-20">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute right-1/4 bottom-1/4 h-80 w-80 rounded-full bg-primary/3 blur-[80px]" />
       </div>
