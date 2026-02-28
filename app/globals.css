@@ -4,30 +4,30 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #edf8fa;
-  --foreground: #1a1a1a;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
   --primary: #b4b4b4;
-  --primary-foreground: #ffffff;
-  --secondary: #f0f0f0;
-  --secondary-foreground: #4a4a4a;
-  --muted: #e0e0e0;
-  --muted-foreground: #7a7a7a;
-  --accent: #b4b4b4;
-  --accent-foreground: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #e0e0e0;
+  --muted: #404040;
+  --muted-foreground: #a0a0a0;
+  --accent: #edf8fa;
+  --accent-foreground: #000000;
   --destructive: #e74c3c;
   --destructive-foreground: #ffffff;
-  --border: rgba(180, 180, 180, 0.3);
-  --input: rgba(180, 180, 180, 0.15);
+  --border: rgba(180, 180, 180, 0.2);
+  --input: rgba(180, 180, 180, 0.1);
   --ring: #b4b4b4;
   --chart-1: #b4b4b4;
   --chart-2: #c4c4c4;
   --chart-3: #d4d4d4;
-  --chart-4: #e0e0e0;
-  --chart-5: #f0f0f0;
+  --chart-4: #a0a0a0;
+  --chart-5: #707070;
   --radius: 0.75rem;
 }
 
