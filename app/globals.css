@@ -4,35 +4,36 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #020810;
-  --foreground: #e4ecf7;
-  --card: rgba(21, 101, 192, 0.07);
-  --card-foreground: #e4ecf7;
-  --popover: #061224;
-  --popover-foreground: #e4ecf7;
-  --primary: #1565C0;
-  --primary-foreground: #ffffff;
-  --secondary: #081830;
-  --secondary-foreground: #b0c7e4;
-  --muted: #081830;
-  --muted-foreground: #6e8bb0;
-  --accent: #42A5F5;
-  --accent-foreground: #ffffff;
+  --background: #0E1117;
+  --foreground: #edf8fa;
+  --card: #161B22;
+  --card-foreground: #edf8fa;
+  --popover: #161B22;
+  --popover-foreground: #edf8fa;
+  --primary: #b4b4b4;
+  --primary-foreground: #0E1117;
+  --secondary: #1C2128;
+  --secondary-foreground: #c9d1d9;
+  --muted: #30363d;
+  --muted-foreground: #8b949e;
+  --accent: #edf8fa;
+  --accent-foreground: #0E1117;
   --destructive: #e74c3c;
   --destructive-foreground: #ffffff;
-  --border: rgba(33, 150, 243, 0.2);
-  --input: rgba(33, 150, 243, 0.15);
-  --ring: #42A5F5;
-  --chart-1: #1565C0;
-  --chart-2: #2196F3;
-  --chart-3: #42A5F5;
-  --chart-4: #80D8FF;
-  --chart-5: #b0c7e4;
+  --border: rgba(180, 180, 180, 0.15);
+  --input: rgba(180, 180, 180, 0.08);
+  --ring: #b4b4b4;
+  --chart-1: #b4b4b4;
+  --chart-2: #c4c4c4;
+  --chart-3: #d4d4d4;
+  --chart-4: #a0a0a0;
+  --chart-5: #707070;
   --radius: 0.75rem;
 }
 
 @theme inline {
   --font-sans: 'Inter', 'Inter Fallback', sans-serif;
+  --font-headings: 'Plus Jakarta Sans', 'Inter Fallback', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -82,11 +83,6 @@ html {
   50% { transform: translateY(-10px); }
 }
 
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.25; }
-}
-
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -126,19 +122,12 @@ html {
   animation: float 6s ease-in-out infinite;
 }
 
-.animate-glow-pulse {
-  animation: glow-pulse 4s ease-in-out infinite;
-}
-
 .glass-card {
-  background: rgba(21, 101, 192, 0.05);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(33, 150, 243, 0.1);
+  background: rgba(17, 24, 39, 0.7);
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .glass-card-hover:hover {
-  background: rgba(21, 101, 192, 0.08);
-  border-color: rgba(66, 165, 245, 0.2);
-  box-shadow: 0 0 20px rgba(33, 150, 243, 0.08);
+  background: rgba(17, 24, 39, 0.9);
+  border-color: rgba(37, 99, 235, 0.2);
 }
