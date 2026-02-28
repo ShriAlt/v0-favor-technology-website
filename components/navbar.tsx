@@ -132,7 +132,7 @@ export function Navbar() {
           )}
           <Link
             href="/contact"
-            className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-all hover:bg-[#d4e8f0] hover:shadow-lg"
+            className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-all hover:bg-[#d8ecf2] hover:shadow-lg"
           >
             Book Strategy Call
           </Link>

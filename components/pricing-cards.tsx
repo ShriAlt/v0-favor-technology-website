@@ -118,8 +118,8 @@ export function PricingCards() {
                   href={`/contact?plan=${plan.slug}`}
                   className={`flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold transition-all ${
                     isPopular
-                      ? "bg-primary text-primary-foreground hover:bg-accent hover:shadow-[0_0_30px_rgba(33,150,243,0.4)]"
-                      : "border border-border bg-secondary/40 text-foreground hover:border-accent/40 hover:bg-primary/20"
+                      ? "bg-accent text-accent-foreground hover:bg-[#d4e8f0] hover:shadow-lg"
+                      : "border border-primary/20 bg-transparent text-foreground hover:bg-primary/15 hover:border-primary/40"
                   }`}
                 >
                   {plan.slug === "custom" ? "Request Custom Quote" : "Get Started"}
