@@ -68,65 +68,59 @@ export function Divisions() {
   const isInView = useInView(ref, { threshold: 0.1 })
 
   return (
-    <section id="services" className="relative py-14 md:py-20">
-      <div className="animate-glow-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-primary/3 blur-[80px]" />
-
-      <div ref={ref} className="relative mx-auto max-w-6xl px-6">
-        <div className="mb-12 text-center">
-          <span className="mb-3 inline-block text-xs font-semibold tracking-widest text-accent uppercase">
-            Our Divisions
-          </span>
-          <h2 className="mb-5 text-3xl font-bold tracking-tight text-foreground md:text-5xl text-balance">
-            Two Divisions, One Growth System
+    <section id="services" className="relative bg-background py-16 md:py-24">
+      <div ref={ref} className="mx-auto max-w-6xl px-6">
+        {/* Section Header */}
+        <div className="mb-16">
+          <h2 className="mb-6 text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.2]">
+            Two Divisions,
+            <br />
+            One Growth System
           </h2>
-          <p className="mx-auto max-w-2xl text-base text-muted-foreground leading-relaxed">
-            Favor Apps builds the technology. Favor Digital Marketing drives the
-            traffic. Together, they create a complete growth engine.
+          <p className="max-w-2xl text-base text-muted-foreground leading-relaxed">
+            Favor Apps builds the technology. Favor Digital Marketing drives the traffic. Together, they create a complete growth engine.
           </p>
         </div>
 
+        {/* Services Grid */}
         <div className="grid gap-8 md:grid-cols-2">
           {divisions.map((div, i) => (
             <div
               key={div.title}
-              className={`glass-card glass-card-hover group flex flex-col rounded-2xl p-8 transition-all duration-500 ${
+              className={`group flex flex-col rounded-2xl bg-card p-8 md:p-10 border border-border transition-all duration-500 hover:shadow-lg ${
                 isInView
                   ? "translate-y-0 opacity-100"
                   : "translate-y-12 opacity-0"
               }`}
               style={{ transitionDelay: `${i * 150}ms` }}
             >
-              {/* Header */}
-              <div className="mb-4">
-                <div
-                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl"
-                  style={{ backgroundColor: `${div.accent}20` }}
-                >
-                  <div.icon size={24} style={{ color: div.accent }} />
+              {/* Icon Header */}
+              <div className="mb-6">
+                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
+                  <div.icon size={28} className="text-primary" />
                 </div>
-                <h3 className="mb-1 text-xl font-bold text-foreground">
+                <h3 className="mb-2 text-3xl font-bold text-foreground">
                   {div.title}
                 </h3>
-                <p className="text-sm font-medium text-accent">
+                <p className="text-base font-medium text-primary">
                   {div.tagline}
                 </p>
               </div>
 
-              <p className="mb-5 text-sm text-muted-foreground leading-relaxed">
+              {/* Description */}
+              <p className="mb-8 text-base text-muted-foreground leading-relaxed">
                 {div.description}
               </p>
 
-              {/* Services */}
-              <div className="mb-6 flex flex-1 flex-col gap-3">
+              {/* Services List */}
+              <div className="mb-8 flex flex-1 flex-col gap-4">
+                <p className="text-sm font-semibold text-foreground uppercase tracking-wide">Key Services</p>
                 {div.services.map((service) => (
                   <div
                     key={service.label}
                     className="flex items-center gap-3 text-sm text-muted-foreground"
                   >
-                    <service.icon
-                      size={14}
-                      className="shrink-0 text-accent/70"
-                    />
+                    <service.icon size={16} className="shrink-0 text-primary" />
                     {service.label}
                   </div>
                 ))}
@@ -134,16 +128,13 @@ export function Divisions() {
 
               {/* Stats */}
               {"stats" in div && div.stats && (
-                <div className="mb-6 grid grid-cols-3 gap-3">
+                <div className="mb-8 grid grid-cols-3 gap-4">
                   {div.stats.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="rounded-lg bg-primary/10 p-3 text-center"
-                    >
-                      <p className="text-lg font-bold text-accent">
+                    <div key={stat.label} className="text-center">
+                      <p className="text-2xl font-bold text-primary mb-1">
                         {stat.value}
                       </p>
-                      <p className="text-[10px] tracking-wide text-muted-foreground uppercase">
+                      <p className="text-xs tracking-wide text-muted-foreground uppercase">
                         {stat.label}
                       </p>
                     </div>
@@ -154,13 +145,10 @@ export function Divisions() {
               {/* CTA */}
               <Link
                 href={div.href}
-                className="flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary/40 px-6 py-3 text-sm font-medium text-foreground transition-all group-hover:border-accent/40 group-hover:bg-primary/20"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg"
               >
                 {div.cta}
-                <ArrowRight
-                  size={14}
-                  className="transition-transform group-hover:translate-x-1"
-                />
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           ))}

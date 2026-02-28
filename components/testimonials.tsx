@@ -119,30 +119,26 @@ export function Testimonials({ filter }: TestimonialsProps) {
     : allTestimonials
 
   return (
-    <section className="relative py-14 md:py-20">
+    <section className="relative bg-background py-16 md:py-24">
       <div ref={ref} className="mx-auto max-w-7xl px-6">
-        <div className="mb-12 text-center">
-          <div className="mb-4 flex items-center justify-center gap-3">
-            <div className="h-px w-12 bg-accent/50" />
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase">
-              Client Results
-            </span>
-            <div className="h-px w-12 bg-accent/50" />
-          </div>
-          <h2 className="mb-5 text-3xl font-bold tracking-tight text-foreground md:text-5xl text-balance">
-            Client Success Stories
+        {/* Section Header */}
+        <div className="mb-16">
+          <h2 className="mb-6 text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.2]">
+            Client Success
+            <br />
+            Stories
           </h2>
-          <p className="mx-auto max-w-2xl text-base text-muted-foreground leading-relaxed">
-            Every engagement is built around clear deliverables and measurable
-            outcomes.
+          <p className="max-w-2xl text-base text-muted-foreground leading-relaxed">
+            Every engagement is built around clear deliverables and measurable outcomes. Here's how we've helped brands across industries scale.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* Testimonials Grid */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className={`glass-card glass-card-hover flex flex-col rounded-2xl p-7 transition-all duration-500 ${
+              className={`flex flex-col rounded-xl bg-card border border-border p-8 md:p-10 transition-all duration-500 hover:shadow-lg ${
                 isInView
                   ? "translate-y-0 opacity-100"
                   : "translate-y-12 opacity-0"
@@ -150,54 +146,57 @@ export function Testimonials({ filter }: TestimonialsProps) {
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {/* Stars */}
-              <div className="mb-5 flex gap-1">
+              <div className="mb-6 flex gap-1">
                 {Array.from({ length: 5 }).map((_, j) => (
                   <Star
                     key={j}
-                    size={14}
-                    className="fill-accent text-accent"
+                    size={16}
+                    className="fill-primary text-primary"
                   />
                 ))}
               </div>
 
-              {/* Result highlight */}
-              <p className="mb-5 text-sm font-semibold text-foreground leading-relaxed">
+              {/* Result Quote */}
+              <p className="mb-8 text-base font-semibold text-foreground leading-relaxed flex-1">
                 {`"${t.result}"`}
               </p>
 
-              {/* Structured details */}
-              <div className="mb-5 flex flex-1 flex-col gap-2.5">
-                <div className="flex items-start gap-2">
-                  <span className="text-[11px] font-medium tracking-wide text-muted-foreground uppercase w-20 shrink-0 pt-0.5">
+              {/* Details */}
+              <div className="mb-8 space-y-4 text-sm">
+                <div className="flex flex-col gap-1">
+                  <span className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
                     Industry
                   </span>
-                  <span className="text-sm text-foreground/80">{t.industry}</span>
+                  <span className="text-foreground/80">{t.industry}</span>
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-[11px] font-medium tracking-wide text-muted-foreground uppercase w-20 shrink-0 pt-0.5">
+                <div className="flex flex-col gap-1">
+                  <span className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
                     Service
                   </span>
-                  <span className="text-sm text-foreground/80">{t.service}</span>
+                  <span className="text-foreground/80">{t.service}</span>
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-[11px] font-medium tracking-wide text-muted-foreground uppercase w-20 shrink-0 pt-0.5">
+                <div className="flex flex-col gap-1">
+                  <span className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
                     Website
                   </span>
                   <a
                     href={`https://${t.website}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-sm text-accent hover:underline"
+                    className="inline-flex items-center gap-1 text-primary hover:underline w-fit"
                   >
                     {t.website}
-                    <ExternalLink size={11} className="opacity-60" />
+                    <ExternalLink size={12} className="opacity-70" />
                   </a>
                 </div>
               </div>
 
+              {/* Divider */}
+              <div className="mb-6 border-t border-border" />
+
               {/* Author */}
-              <div className="flex items-center gap-3 border-t border-border/50 pt-5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-sm font-bold text-accent">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-sm font-bold text-primary">
                   {t.name.charAt(0)}
                 </div>
                 <div>
@@ -208,8 +207,8 @@ export function Testimonials({ filter }: TestimonialsProps) {
                 </div>
               </div>
 
-              {/* Division tag */}
-              <div className="mt-4 rounded-lg bg-primary/10 px-3 py-1.5 text-center text-[10px] font-medium tracking-wide text-accent uppercase">
+              {/* Division Badge */}
+              <div className="inline-flex rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-medium tracking-wide text-primary uppercase w-fit">
                 {t.division}
               </div>
             </div>
