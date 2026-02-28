@@ -55,34 +55,45 @@ export function WhyFavor() {
   const isInView = useInView(ref, { threshold: 0.15 })
 
   return (
-    <section className="relative bg-secondary py-16 md:py-24">
-      <div ref={ref} className="mx-auto max-w-6xl px-6">
-        {/* Section Header */}
-        <div className="mb-16">
-          <h2 className="mb-6 text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.2]">
+    <section className="relative py-14 md:py-20">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="animate-glow-pulse absolute left-1/3 top-1/3 h-[300px] w-[300px] rounded-full bg-primary/3 blur-[100px]" />
+      </div>
+
+      <div
+        ref={ref}
+        className={`relative mx-auto max-w-6xl px-6 transition-all duration-700 ${
+          isInView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+        }`}
+      >
+        <div className="mb-12 text-center">
+          <span className="mb-3 inline-block text-xs font-semibold tracking-widest text-accent uppercase">
+            The Favor Difference
+          </span>
+          <h2 className="mb-5 text-3xl font-bold tracking-tight text-foreground md:text-5xl text-balance">
             Why Favor
           </h2>
-          <p className="max-w-2xl text-base text-muted-foreground leading-relaxed">
-            We operate differently. Here is what sets us apart from every other agency or freelancer.
+          <p className="mx-auto max-w-xl text-base text-muted-foreground leading-relaxed">
+            We operate differently. Here is what sets us apart from every other
+            agency or freelancer.
           </p>
         </div>
 
-        {/* Reasons Grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reasons.map((r, i) => (
             <div
               key={r.title}
-              className={`flex flex-col rounded-xl bg-background p-8 border border-border transition-all duration-500 hover:shadow-md ${
+              className={`glass-card glass-card-hover flex flex-col rounded-2xl p-8 transition-all duration-500 ${
                 isInView
                   ? "translate-y-0 opacity-100"
                   : "translate-y-12 opacity-0"
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/15">
-                <r.icon size={24} className="text-primary" />
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
+                <r.icon size={22} className="text-accent" />
               </div>
-              <h3 className="mb-3 text-lg font-bold text-foreground">
+              <h3 className="mb-3 text-base font-bold text-foreground">
                 {r.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
