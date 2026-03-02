@@ -32,11 +32,32 @@ export function Contact() {
     }
   }, [searchParams])
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 4000)
+  
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get("name"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      service: formData.get("service"),
+      message: formData.get("message"),
+    }
+  
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+  
+    if (res.ok) {
+      setSubmitted(true)
+      setTimeout(() => setSubmitted(false), 4000)
+    } else {
+      alert("Failed to send message. Please try again.")
+    }
   }
+  
 
   return (
     <section className="relative py-14 md:py-20">
@@ -76,6 +97,7 @@ export function Contact() {
                     <input
                       id="name"
                       type="text"
+                      name="name"
                       required
                       placeholder="Your name"
                       className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30"
@@ -91,6 +113,7 @@ export function Contact() {
                     <input
                       id="phone"
                       type="tel"
+                      name="phone"
                       required
                       placeholder="+91 XXXXX XXXXX"
                       className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30"
@@ -108,6 +131,7 @@ export function Contact() {
                   <input
                     id="email"
                     type="email"
+                    name="email"
                     required
                     placeholder="you@company.com"
                     className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30"
@@ -123,6 +147,7 @@ export function Contact() {
                   </label>
                   <select
                     id="service"
+                    name="service"
                     required
                     value={selectedPlan}
                     onChange={(e) => setSelectedPlan(e.target.value)}
@@ -151,6 +176,7 @@ export function Contact() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={4}
                     required
                     placeholder="Tell us about your project..."
